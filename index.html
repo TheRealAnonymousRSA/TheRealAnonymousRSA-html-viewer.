@@ -1,0 +1,70 @@
+html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TheRealAnonymousRSA HTML Viewer</title>
+
+  <!-- CodeMirror 5 (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">TRA</div>
+      <div class="titles">
+        <div class="title">TheRealAnonymousRSA HTML Viewer</div>
+        <div class="subtitle">Edit HTML — Run Preview — Download / Upload</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="runBtn" class="btn primary">Run Preview ▶</button>
+      <label class="toggle">
+        <input id="autoRun" type="checkbox" checked />
+        <span>Auto-run</span>
+      </label>
+      <label class="toggle">
+        <input id="allowScripts" type="checkbox" />
+        <span>Allow scripts</span>
+      </label>
+
+      <button id="downloadBtn" class="btn">Download</button>
+
+      <input id="fileInput" type="file" accept=".html,.htm,.txt" style="display:none" />
+      <button id="uploadBtn" class="btn">Upload</button>
+
+      <button id="darkBtn" class="btn">Dark</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="pane left" id="editorPane">
+      <div class="pane-header">Editor <span id="charCount"></span></div>
+      <textarea id="editor"></textarea>
+    </section>
+
+    <div id="resizer" class="resizer" title="Drag to resize"></div>
+
+    <section class="pane right" id="previewPane">
+      <div class="pane-header">Preview</div>
+      <div class="frame-wrap">
+        <iframe id="previewFrame" sandbox="allow-popups-to-escape-sandbox allow-pointer-lock allow-modals"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer small">Tip: Scripts are blocked by default for safety. Toggle "Allow scripts" to permit JS inside the sandboxed preview.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
